@@ -1,15 +1,16 @@
-# The SALCWM package
+# The ALCWM package
 An R package to implement the methodology described in *Mixture of multivariate linear asymmetric Laplace regressions with multiple asymmetric Laplace covariates* (2025).
 
 To install the package, use the following code in R
 ```{r}
 #install.packages("devtools")
 library(devtools)
-install_github("arnootto/SALCWM")
+install_github("arnootto/ALCWM")
 ```
 ## Example
 Code to reproduce Example 7.1: Australian Institute of Sport data
 ```{r}
+library(ALCWM)
 library(sn)
 data("ais")
 data=ais
