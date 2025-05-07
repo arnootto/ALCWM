@@ -1,0 +1,15 @@
+Package: SALCWM
+Title: Mixture of multivariate linear asymmetric Laplace regressions with multiple asymmetric Laplace covariates
+Version: 0.1.1
+Authors@R: c(person("Arno", "Otto", email = "arno.otto@up.ac.za", role = c("aut","cre")),
+             person("Andriëtte", " Bekker"),
+             person("Antonio, Punzo"),
+             person("Johan", "Ferreira"),
+             person("Cristina", "Tortora")
+            )
+Description: This package fits the shifted asymmetric Laplace cluster-weighted model and the contaminated shifted asymmetric Laplace cluster-weighted model via an EM-algorithm.
+URL: https://github.com/arnootto/SALCWM
+Imports: mclust
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
