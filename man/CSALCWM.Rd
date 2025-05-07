@@ -15,7 +15,8 @@ CSALCWM(
   etamax = 100,
   initialization = "mclust",
   print.iter = T,
-  start.z = NULL
+  start.z = NULL,
+  mu.tol = 1e-05
 )
 }
 \arguments{
@@ -43,7 +44,8 @@ or \code{"manual"}.}
 Default is \code{TRUE}.}
 
 \item{start.z}{Optional matrix of initial posterior probabilities for
-\code{initialization = "manual"}. Default is \code{NULL}.}
+\code{initialization = "manual"}. Default is \code{NULL}.
+@param mu.tol Convergence tolerance for the mean.}
 }
 \value{
 A list containing the following components:
