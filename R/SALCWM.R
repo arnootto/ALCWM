@@ -15,8 +15,9 @@
 #' @param seed Optional seed for random initialization methods. Default is \code{NULL}.
 #' @param start.z Optional matrix of initial posterior probabilities for
 #'   \code{initialization = "manual"}. Default is \code{NULL}.
+#'@param mu.tol Convergence tolerance for the mean.
 #'
-#'' @return A list containing the following components:
+#' @return A list containing the following components:
 #'   \itemize{
 #'     \item \code{Y}: The input response matrix.
 #'     \item \code{X}: The input predictor matrix.
@@ -53,7 +54,8 @@ SALCWM <- function(Y,
                    initialization = "mclust",
                    print.iter=T,
                    seed=NULL,
-                   start.z=NULL
+                   start.z=NULL,
+                   mu.tol=1e-5
 ){
   if(is.vector(Y))
     Y <- matrix(Y,ncol=1)
@@ -173,7 +175,7 @@ SALCWM <- function(Y,
        B <- sum(v2)
        D <- sum(v4)
        mu <- c((B*(v1%*%X)-D*(v4%*%X))/(B*A-D^2))
-       cv <- check.val(X,mu)
+       cv <- check.val(X,mu, mu.tol)
        if(cv == 0){
          alpha <- c((A*(v4%*%X)-D*(v1%*%X))/(B*A-D^2))
        }else{
@@ -218,7 +220,7 @@ SALCWM <- function(Y,
        bden <- crossprod(sqrt(v1)*Xstar,sqrt(v1)*Xstar)-crossprod(v4%*%(v4%*%Xstar),Xstar)/B
        beta <- solve(bden, tol=1e-20) %*% (bnum)
        muY <-  Xstar %*% beta
-       cv <- check.valY(Y,muY)
+       cv <- check.valY(Y,muY, mu.tol)
        muY[cv==1] <- curr.muY[,,g][cv==1]
        alpha<- (v4%*%(Y-muY))/B
        beta <- solve(t(Xstar) %*% Xstar) %*% t(Xstar) %*% muY

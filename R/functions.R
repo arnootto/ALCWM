@@ -85,16 +85,16 @@ e1e2fY <- function(p,x,mu,alpha,inv.sig){
   return(out)
 }
 
-check.val <- function(x,mu){
-  v1 <- apply(x,1,function(v){ifelse(sqrt(sum((v-mu)^2))>1e-10 , 0, 1)})
+check.val <- function(x,mu, mu.tol=1e-5){
+  v1 <- apply(x,1,function(v){ifelse(sqrt(sum((v-mu)^2))>mu.tol , 0, 1)})
   return(sum(v1))
 }
 
 
 
-check.valY <- function(x, mu) {
+check.valY <- function(x, mu, mu.tol=1e-5) {
   # Ensure mu is a matrix
-  v1 <- ifelse(sqrt(rowSums((x-mu)^2))>1e-6,0,1)
+  v1 <- ifelse(sqrt(rowSums((x-mu)^2))>mu.tol,0,1)
   return(v1)
 }
 

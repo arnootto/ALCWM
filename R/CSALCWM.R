@@ -17,6 +17,7 @@
 #'   Default is \code{TRUE}.
 #' @param start.z Optional matrix of initial posterior probabilities for
 #'   \code{initialization = "manual"}. Default is \code{NULL}.
+#'   @param mu.tol Convergence tolerance for the mean.
 #'
 #' @return A list containing the following components:
 #'   \itemize{
@@ -60,7 +61,8 @@ CSALCWM <-function(Y,X,G=2,
                    etamax=100,
                    initialization = "mclust",
                    print.iter=T,
-                   start.z=NULL){
+                   start.z=NULL,
+                   mu.tol=1e-5){
   if(is.vector(Y))
     Y <- matrix(Y,ncol=1)
   if(is.vector(X))
@@ -80,7 +82,7 @@ CSALCWM <-function(Y,X,G=2,
 
   # X Parameters definition
 
-  salcwm <- SALCWM(Y=Y,X=X,G=G,tol=salcwm.tol,max.it = salcwm.max.it, loglikplot = F, initialization = initialization, print.iter=print.iter, start.z=start.z)
+  salcwm <- SALCWM(Y=Y,X=X,G=G,tol=salcwm.tol,max.it = salcwm.max.it, initialization = initialization, print.iter=print.iter, start.z=start.z, mu.tol=mu.tol)
   prmtrs <- salcwm$prmtrs
   zig.hat <- salcwm$z
   salcwm$loglik
@@ -185,7 +187,7 @@ CSALCWM <-function(Y,X,G=2,
       B <- sum(v2)
       D <- sum(v4)
       mu <- c((B*(v1%*%x)-D*(v4%*%x))/(B*A-D^2))
-      cv <- check.val(x,mu)
+      cv <- check.val(x,mu,mu.tol)
       if(cv == 0){
         alpha <- c((A*(v4%*%x)-D*(v1%*%x))/(B*A-D^2))
       }else{
@@ -239,7 +241,7 @@ CSALCWM <-function(Y,X,G=2,
       bden <- crossprod(sqrt(v1)*Xstar,sqrt(v1)*Xstar)-crossprod(v4%*%(v4%*%Xstar),Xstar)/B
       beta <- solve(bden) %*% (bnum)
       muY <-  Xstar %*% beta
-      cv <- check.valY(Y,muY)
+      cv <- check.valY(Y,muY,mu.tol)
       muY[cv==1] <- curr.muY[,,g][cv==1]
       alpha<- (v4%*%(Y-muY))/B
       beta <- solve(t(Xstar) %*% Xstar) %*% t(Xstar) %*% muY
