@@ -19,8 +19,8 @@
 #'est2=CSALCWM(Y=cbind(data$RCC,data$WCC),X=cbind(data$BMI,data$SSF,data$Bfat,data$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
 #'
 #' @docType package
-#' @name salcwm
-#' @aliases SALCWM-package
+#' @name ALCWM
+#' @aliases ALCWM-package
 #' @author Arno Otto <arno.otto@up.ac.za>, Andriëtte  Bekker, Antonio Punzo, Johan Ferreira, Cristina Tortora.
 #' @keywords package
 NULL
