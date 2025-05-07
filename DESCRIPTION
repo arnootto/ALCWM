@@ -1,4 +1,4 @@
-Package: SALCWM
+Package: ALCWM
 Title: Mixture of multivariate linear asymmetric Laplace regressions with multiple asymmetric Laplace covariates
 Version: 0.1.1
 Authors@R: c(person("Arno", "Otto", email = "arno.otto@up.ac.za", role = c("aut","cre")),
