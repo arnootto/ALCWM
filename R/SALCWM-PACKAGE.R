@@ -10,9 +10,6 @@
 #'   \item \code{\link{dCSAL}}: Evaluates the density of the Contaminated Shifted Asymmetric Laplace distribution.
 #' }
 #'
-#' @section Getting Started:
-#' To get started, try the examples in \code{\link{my_exported_function}}.
-#'
 #'@examples
 #'library(sn)
 #'data("ais")
@@ -22,7 +19,7 @@
 #'est2=CSALCWM(Y=cbind(data$RCC,data$WCC),X=cbind(data$BMI,data$SSF,data$Bfat,data$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
 #'
 #' @docType package
-#' @name SALCWM
+#' @name salcwm
 #' @aliases SALCWM-package
 #' @author Arno Otto <arno.otto@up.ac.za>, Andriëtte  Bekker, Antonio Punzo, Johan Ferreira, Cristina Tortora.
 #' @keywords package
