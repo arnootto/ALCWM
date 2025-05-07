@@ -8,7 +8,7 @@ Authors@R: c(person("Arno", "Otto", email = "arno.otto@up.ac.za", role = c("aut"
              person("Cristina", "Tortora")
             )
 Description: This package fits the shifted asymmetric Laplace cluster-weighted model and the contaminated shifted asymmetric Laplace cluster-weighted model via an EM-algorithm.
-URL: https://github.com/arnootto/SALCWM
+URL: https://github.com/arnootto/ALCWM
 Imports: mclust
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
