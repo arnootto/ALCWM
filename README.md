@@ -1,5 +1,5 @@
 # The ALCWM package
-An R package to implement the methodology described in *Mixture of multivariate linear asymmetric Laplace regressions with multiple asymmetric Laplace covariates* (2025).
+An R package to implement the methodology described in *Mixtures of multivariate linear asymmetric Laplace regressions with multiple asymmetric Laplace covariates* (2025).
 
 To install the package, use the following code in R
 ```{r}
