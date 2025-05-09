@@ -10,11 +10,11 @@ install_github("arnootto/ALCWM")
 ## Example
 Code to reproduce Example 7.1: Australian Institute of Sport data
 ```{r}
+# Fit the SALCWM and CSALCWM models with G = 2 components to the AIS dataset
 library(ALCWM)
 library(sn)
 data("ais")
-data=ais
-subset=data[,c("sex","RCC","WCC","BMI","SSF","Bfat","LBM")]
-est1=SALCWM(Y=cbind(data$RCC,data$WCC),X=cbind(data$BMI,data$SSF,data$Bfat,data$LBM),G=2,tol=1e-5, max.it=2000,initialization = "mclust")
-est2=CSALCWM(Y=cbind(data$RCC,data$WCC),X=cbind(data$BMI,data$SSF,data$Bfat,data$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
+est1=SALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2,tol=1e-5, max.it=2000,initialization = "mclust")
+est2=CSALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
+#'
 ```

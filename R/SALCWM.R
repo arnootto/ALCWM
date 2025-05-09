@@ -46,6 +46,7 @@
 #' @import mclust
 #'@examples
 #'# Fit the SALCWM model with G = 2 components to the AIS dataset
+#'library(ALCWM)
 #'library(sn)
 #'data("ais")
 #'est=SALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2,tol=1e-5, max.it=2000,initialization = "mclust")
