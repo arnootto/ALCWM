@@ -52,6 +52,13 @@
 #'
 #' @import mclust
 #'
+#'#'@examples
+#'# Fit the CSALCWM model with G = 2 components to the AIS dataset
+#'library(sn)
+#'data("ais")
+#'est=CSALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
+#
+#'
 #' @export
 CSALCWM <-function(Y,X,G=2,
                    tol=1e-2,
@@ -319,13 +326,13 @@ CSALCWM <-function(Y,X,G=2,
     muX       = prmtrs$X$mu,
     SigmaX    = prmtrs$X$sig,
     alphaX    = prmtrs$X$alpha,
-    deltaX    = deltaX,
+    deltaX    = 1-deltaX,
     etaX      = etaX,
     beta      = prmtrs$beta,
     muY       = prmtrs$muY,
     SigmaY    = prmtrs$Y$sig,
     alphaY    = prmtrs$Y$alpha,
-    deltaY    = deltaY,
+    deltaY    = 1-deltaY,
     etaY      = etaY,
     z         = zig.hat,
     group     = group,
