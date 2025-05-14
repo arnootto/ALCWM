@@ -81,3 +81,11 @@ A list containing the following components:
 \description{
 Maximum likelihood fitting of the contaminated shifted asymmetric Laplace (SAL) cluster-weighted model (CWM) using an ECM algorithm.
 }
+\examples{
+# Fit the CSALCWM model with G = 2 components to the AIS dataset
+library(ALCWM)
+library(sn)
+data("ais")
+est=ml.cSALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
+
+}

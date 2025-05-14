@@ -52,7 +52,7 @@
 #'
 #' @import mclust
 #'
-#'#'@examples
+#'@examples
 #'# Fit the CSALCWM model with G = 2 components to the AIS dataset
 #'library(ALCWM)
 #'library(sn)
