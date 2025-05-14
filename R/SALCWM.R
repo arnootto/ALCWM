@@ -49,10 +49,10 @@
 #'library(ALCWM)
 #'library(sn)
 #'data("ais")
-#'est=SALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2,tol=1e-5, max.it=2000,initialization = "mclust")
+#'est=ml.SALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2,tol=1e-5, max.it=2000,initialization = "mclust")
 #'
 #' @export
-SALCWM <- function(Y,
+ml.SALCWM <- function(Y,
                    X,
                    G=2,
                    tol=0.001,

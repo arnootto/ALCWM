@@ -7,8 +7,8 @@
 #' @param G Number of clusters (components) to fit. Default is 2.
 #' @param tol Convergence tolerance for the outer EM algorithm. Default is 0.01.
 #' @param max.it Maximum number of iterations for the outer EM algorithm. Default is 2000.
-#' @param salcwm.tol Convergence tolerance for the inner SALCWM algorithm. Default is 0.01.
-#' @param salcwm.max.it Maximum number of iterations for the inner SALCWM algorithm. Default is 100.
+#' @param salcwm.tol Convergence tolerance for the initial SALCWM algorithm. Default is 0.01.
+#' @param salcwm.max.it Maximum number of iterations for the initial SALCWM algorithm. Default is 100.
 #' @param etamax Upper bound for the inflation parameter (eta). Default is 100.
 #' @param initialization Method for initializing the posterior probabilities. Options are
 #'   \code{"mclust"} (default), \code{"kmeans"}, \code{"random.soft"}, \code{"random.hard"},
@@ -25,7 +25,7 @@
 #'     \item \code{X}: The input predictor matrix.
 #'     \item \code{G}: Number of clusters.
 #'     \item \code{n}: Number of observations.
-#'     \item \code{salcwm}: Results from the inner SALCWM model fit.
+#'     \item \code{salcwm}: Results from the initial SALCWM model fit.
 #'     \item \code{npar}: Number of model parameters.
 #'     \item \code{prior}: Estimated prior probabilities for each cluster.
 #'     \item \code{muX}: Estimated mean vectors for \code{X} in each cluster.
@@ -57,11 +57,11 @@
 #'library(ALCWM)
 #'library(sn)
 #'data("ais")
-#'est=CSALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
+#'est=ml.cSALCWM(Y=cbind(ais$RCC,ais$WCC),X=cbind(ais$BMI,ais$SSF,ais$Bfat,ais$LBM),G=2, tol=1e-5,max.it=2000,initialization = "mclust")
 #
 #'
 #' @export
-CSALCWM <-function(Y,X,G=2,
+ml.cSALCWM <-function(Y,X,G=2,
                    tol=1e-2,
                    max.it=2000,
                    salcwm.tol=1e-2,
@@ -90,7 +90,7 @@ CSALCWM <-function(Y,X,G=2,
 
   # X Parameters definition
 
-  salcwm <- SALCWM(Y=Y,X=X,G=G,tol=salcwm.tol,max.it = salcwm.max.it, initialization = initialization, print.iter=print.iter, start.z=start.z, mu.tol=mu.tol)
+  salcwm <- ml.SALCWM(Y=Y,X=X,G=G,tol=salcwm.tol,max.it = salcwm.max.it, initialization = initialization, print.iter=print.iter, start.z=start.z, mu.tol=mu.tol)
   prmtrs <- salcwm$prmtrs
   zig.hat <- salcwm$z
   salcwm$loglik
